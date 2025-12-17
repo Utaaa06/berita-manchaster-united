@@ -1,0 +1,355 @@
+/* --- Pengaturan Global & Reset --- */
+:root {
+    --primary-color: #5701a8; /* Merah khas SF Gate / Hearst */
+    --dark-color: #222;
+    --light-gray: #f4f4f4;
+    --medium-gray: #e0e0e0;
+    --text-color: #333;
+    --border-color: #ddd;
+    --header-bg: #fff;
+    --sidebar-bg: #fafafa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Komponen Umum --- */
+.article-card {
+    border: 1px solid var(--border-color);
+    background-color: #8a8a8a;
+    transition: box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.article-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.article-card img {
+    width: 100%;
+    height: 180px; /* Tinggi gambar seragam untuk grid */
+    object-fit: cover; /* Memastikan gambar terpotong dengan rapi */
+}
+
+.article-card.small img {
+    height: 120px;
+}
+
+.article-card-content {
+    padding: 12px 15px;
+}
+
+.article-category {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.article-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 5px 0;
+    line-height: 1.3;
+    color: var(--dark-color);
+}
+
+.article-card.main .article-title {
+    font-size: 28px;
+}
+
+.article-meta {
+    font-size: 12px;
+    color: #777;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--primary-color);
+    letter-spacing: -2px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.search-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* --- Breaking News Bar --- */
+.breaking-news-bar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* --- Layout Utama (Grid) --- */
+.main-layout {
+    display: grid;
+    /* Definisi Grid: 6 kolom untuk konten, 1 kolom untuk sidebar */
+    grid-template-columns: 6fr 1fr; 
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.content-area {
+    /* Grid area untuk konten utama */
+}
+
+.sidebar {
+    /* Grid area untuk sidebar */
+}
+
+.main-article {
+    grid-column: span 6; /* Membentang 6 kolom */
+    margin-bottom: 20px;
+}
+
+.main-article img {
+    height: 400px;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 kolom grid */
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.article-grid .article-card {
+    grid-column: span 2; /* Default: setiap card ambil 2 kolom */
+}
+
+.article-grid .article-card.small {
+    grid-column: span 2; /* Card kecil juga ambil 2 kolom */
+}
+
+.section-header {
+    grid-column: span 6;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.text-only-list {
+    grid-column: span 6;
+    list-style: none;
+}
+
+.text-only-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.text-only-list li:last-child {
+    border-bottom: none;
+}
+
+.text-only-list a {
+    display: block;
+    font-weight: 600;
+}
+
+.text-only-list .article-meta {
+    margin-top: 3px;
+}
+
+/* --- Sidebar --- */
+.sidebar-widget {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.sidebar-widget h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.sidebar-widget ul {
+    list-style: none;
+}
+
+.sidebar-widget li {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.sidebar-widget li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.sidebar-widget a {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.ad-placeholder {
+    background-color: var(--light-gray);
+    border: 1px dashed var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ad-placeholder.ad-300x250 {
+    height: 250px;
+}
+
+.ad-placeholder.ad-300x600 {
+    height: 600px;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--dark-color);
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.main-footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.main-footer a {
+    color: #ccc;
+    font-size: 13px;
+}
+
+.main-footer a:hover {
+    color: #fff;
+}
+
+.copyright {
+    font-size: 12px;
+}
+
+/* --- Responsive Design (Mobile) --- */
+@media (max-width: 768px) {
+    /* Header */
+    .nav-menu {
+        display: none; /* Sembunyikan menu desktop */
+    }
+    
+    /* Layout Utama */
+    .main-layout {
+        grid-template-columns: 1fr; /* Ubah menjadi 1 kolom */
+    }
+
+    .main-article, .article-grid .article-card, .article-grid .article-card.small, .section-header, .text-only-list {
+        grid-column: span 1; /* Semua elemen span 1 kolom */
+    }
+
+    .main-article img {
+        height: 250px; /* Sesuaikan tinggi gambar untuk mobile */
+    }
+
+    .article-card img, .article-card.small img {
+        height: auto; /* Biarkan tinggi gambar menyesuaikan aspek rasio */
+    }
+
+    /* Sidebar */
+    .sidebar {
+        display: contents; /* "Hancurkan" sidebar dan masukkan isinya ke aliran utama */
+    }
+    
+    .sidebar-widget {
+        margin-top: 30px; /* Beri jarak dari konten sebelumnya */
+    }
+
+    /* Footer */
+    .main-footer ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    
+}
